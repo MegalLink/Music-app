@@ -9,12 +9,12 @@ export class SpotifyService {
   constructor(private _http:HttpClient) { 
     console.log("Spotify Service listo")
   }
+  private tokenSpo:string ="BQDNCmBRe1xbe6V4SuO0GaIt_1EejZNWLXveGpLkqL6lM--kTJwqo_K-Rmmq0j9C3BWUM4nuDJ0yj30OI3o";
   getNewReleases(){
     const headers=new HttpHeaders({
-     'Authorization':'Bearer BQBEHlMNvD8mN_14MSj_FnE09G3TTXu2mvv9fjXoaCnEvoDMnE5wPf0tNfzHh0I25f-vVvkUVge6UD6O3zc'
+     'Authorization': `Bearer ${this.tokenSpo}`
     })
-    this._http.get('https://api.spotify.com/v1/browse/new-releases',{headers}).subscribe(data=>{
-      console.log(data);
-    })
+    //https://api.spotify.com/v1/browse/new-releases?limit=5
+     return this._http.get('https://api.spotify.com/v1/browse/new-releases?limit=20',{headers})
   }
 }
