@@ -9,7 +9,7 @@ export class SpotifyService {
     console.log("Spotify Service listo");
   }
   private tokenSpo: string =
-    "BQCGpLaGJm5URbfRXEvA8SXlPh-mI1AV4LDDH99lSATzy-d30UFRjKlN65FAbCgS_-tONtP9lLm7PUCKqKI";
+    "BQBJLIvtDs59yNQdnuPwT6Ydos1-wXdMfimHgMv6LH5bqmLlbXkHxzufYe2_vMTydfS_0qvNJjsWGWtH5CA";
   getQuery(query: string) {
     const url = `https://api.spotify.com/v1/${query}`;
     const headers = new HttpHeaders({
@@ -30,6 +30,10 @@ export class SpotifyService {
   }
   getArtista(id: string) {
     return this.getQuery(`artists/${id}`);
+    
+  }
+  getTopTracks(id: string) {
+    return this.getQuery(`artists/${id}/top-tracks?country=us`).pipe(map(tracks=>tracks['tracks']))
     
   }
 }
