@@ -9,6 +9,8 @@ import { SpotifyService } from "src/app/services/spotify.service";
 export class SearchComponent implements OnInit {
   artistas: any[] = [];
   loading: boolean;
+  error:boolean=false;
+  msgErro:string="";
   constructor(private _spotify: SpotifyService) {
     this.loading = true;
   }
@@ -17,6 +19,9 @@ export class SearchComponent implements OnInit {
       this._spotify.getArtistas(termino).subscribe((data: any) => {
         this.artistas = data;
         this.loading = false;
+      },(erroS)=>{
+        this.error=true;
+        this.msgErro=erroS.error.error.message;
       });
     }
     

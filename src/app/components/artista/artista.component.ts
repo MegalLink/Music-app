@@ -9,9 +9,11 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 export class ArtistaComponent implements OnInit {
 artista:any={};
 loadingArtist:Boolean;
+
 topTracks:any[]=[];
   constructor(private _activeRoute:ActivatedRoute,private spotify:SpotifyService) { 
     this.loadingArtist=true;
+    
     this._activeRoute.params.subscribe(params=>{
       //console.log(params['id'])
       this.getArtista(params['id']);
@@ -33,7 +35,7 @@ getTopTracks(id:string){
     console.log(tracks);
     this.topTracks=tracks;
     
-  })
+  });
 }
   ngOnInit() {
   }
